@@ -15,14 +15,16 @@ public class SpaceshipController : MonoBehaviour {
     public float slowingRadius = 1f;
     private float distance = 0f;
     public float slowingRate = 1;
+    public bool isControllable = true;
 
     void Start() {
         body = GetComponent<Rigidbody2D>();
+        body.position = GameManager.instance.SpaceshipPosition;
         particle = GetComponent<ParticleSystem>();
     }
 
     void FixedUpdate() {
-        if (Input.GetButton("Fire1")) {
+        if (isControllable && Input.GetButton("Fire1")) {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         desired_velocity = target - body.position;
@@ -42,5 +44,10 @@ public class SpaceshipController : MonoBehaviour {
         vel.x = -velocity.magnitude;
         body.position += velocity;
         body.rotation = Mathf.Lerp(body.rotation, angle, angularSpeed * Time.deltaTime);
+    }
+
+    public void GoTo(Vector2 position) {
+        isControllable = false;
+        target = position;
     }
 }

@@ -1,0 +1,61 @@
+title: JojoA
+tags: 
+colorID: 0
+position: 540,261
+---
+<<if visited("Messch") is true>>
+Jojo: Hey don't touch the MesschMessches. They don't like that.
+<<elseif visited("JojoA") is true>>
+Jojo: Wassup
+<<else>>
+Jojo: Are you lost ?
+[[I think ...|JojoB1]]
+[[No.|JojoB2]]
+<<endif>>
+===
+title: JojoB1
+tags: 
+colorID: 5
+position: 229,549
+---
+Jojo: The këparh is this way. You'll have to walk a few hours.
+-> The këparh..?
+-> I'm not searching for...that? 
+Jojo: Oh boy, those townsfolks who know nothing!
+Jojo: Hey can you help me before leaving?
+[[Sure.|JojoC]]
+[[I'm in a hurry sorry!|JojoB1.exit]]
+===
+title: JojoB2
+tags: 
+colorID: 0
+position: 827,524
+---
+Jojo: Okay, sorry to disturb you. Can you help me before leaving?
+[[Sure.|JojoC]]
+[[I'm in a hurry sorry!|JojoB2.exit]]
+===
+title: JojoC
+tags: 
+colorID: 0
+position: 550,823
+---
+Jojo: Could you feed the Messch-Messches with the fruits? They're a bit grumpy those days, fruits will be good for them.
+[[Let's do this!|JojoD1]]
+[[How?|JojoD2]]
+[[I'm in a hurry sorry!|JojoC.exit]]
+===
+title: JojoD1
+tags: 
+colorID: 0
+position: 176,1045
+---
+Thanks!
+===
+title: JojoD2
+tags: 
+colorID: 0
+position: 850,1071
+---
+Take a fruit and give it to a Messch-Messch of course.
+===

@@ -23,7 +23,10 @@ public class LevelManager : MonoBehaviour {
         animator.SetTrigger("Fade");
     }
 
-    public void OnFadeComplete() => SceneManager.LoadScene(levelToLoad);
+    public void OnFadeComplete() {
+        SceneManager.LoadScene(levelToLoad);
+        animator.SetTrigger("Fade");
+    }
 
     // void OnSceneLoaded(Scene scene, LoadSceneMode mode) => animator.SetTrigger("Fade");
 

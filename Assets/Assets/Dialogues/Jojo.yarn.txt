@@ -1,13 +1,16 @@
 title: JojoA
 tags: 
 colorID: 0
-position: 540,261
+position: 540,259
 ---
-<<if visited("Messch") is true>>
-Jojo: Hey don't touch the MesschMessches. They don't like that.
-<<elseif visited("JojoA") is true>>
+<<if $fed == true>>
+Jojo: Thanks! Let me give you this.
+<<elseif visited("JojoA") == true>>
 Jojo: Wassup
 <<else>>
+<<if visited("Messch") is true>>
+Jojo: Hey don't touch the MesschMessches. They don't like that.
+<<endif>>
 Jojo: Are you lost ?
 [[I think ...|JojoB1]]
 [[No.|JojoB2]]
@@ -20,11 +23,11 @@ position: 229,549
 ---
 Jojo: The këparh is this way. You'll have to walk a few hours.
 -> The këparh..?
--> I'm not searching for...that? 
+-> I'm not searching for...that?
 Jojo: Oh boy, those townsfolks who know nothing!
 Jojo: Hey can you help me before leaving?
 [[Sure.|JojoC]]
-[[I'm in a hurry sorry!|JojoB1.exit]]
+[[I'm in a hurry sorry!|Exit]]
 ===
 title: JojoB2
 tags: 
@@ -33,7 +36,7 @@ position: 827,524
 ---
 Jojo: Okay, sorry to disturb you. Can you help me before leaving?
 [[Sure.|JojoC]]
-[[I'm in a hurry sorry!|JojoB2.exit]]
+[[I'm in a hurry sorry!|Exit]]
 ===
 title: JojoC
 tags: 
@@ -43,7 +46,7 @@ position: 550,823
 Jojo: Could you feed the Messch-Messches with the fruits? They're a bit grumpy those days, fruits will be good for them.
 [[Let's do this!|JojoD1]]
 [[How?|JojoD2]]
-[[I'm in a hurry sorry!|JojoC.exit]]
+[[I'm in a hurry sorry!|Exit]]
 ===
 title: JojoD1
 tags: 
@@ -58,4 +61,56 @@ colorID: 0
 position: 850,1071
 ---
 Take a fruit and give it to a Messch-Messch of course.
+===
+title: Messch
+tags: 
+colorID: 0
+position: -374,617
+---
+<<if $fed == false>>
+Messch: Grrr...
+<<if $nbFruits != 0>>
+Feed MesschMessches ?
+-> Yes.
+    <<set $nbFruits = $nbFruits - 1>>
+    <<set $fed = true>>
+    You put a fruit in you inventory.
+-> No.
+<<endif>>
+<<else>>
+Messch: Brr.. Brr..
+<<endif>>
+===
+title: Exit
+tags: 
+colorID: 0
+position: 551,544
+---
+
+===
+title: Fruits
+tags: 
+colorID: 0
+position: -332,255
+---
+<<if $nbFruits == 0>>
+Take a fruit ?
+<<elseif $nbFruits < 4>>
+Take an other fruit ?
+<<else>>
+I think I took enought fruits.
+<<stop>>
+<<endif>>
+-> Yes.
+    <<set $nbFruits = $nbFruits + 1>>
+-> No.
+===
+title: Spaceship
+tags: 
+colorID: 0
+position: -373,1023
+---
+Leave this planet ?
+-> Yes.
+-> No.
 ===

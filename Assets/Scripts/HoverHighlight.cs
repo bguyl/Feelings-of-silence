@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
+using Yarn.Unity;
 
 public class HoverHighlight : MonoBehaviour
 {
     private Color startcolor;
     private new SpriteRenderer renderer;
-    private DialogueTrigger diagTrig;
+    public string dialogueNode;
 
     void Start() {
         renderer = GetComponent<SpriteRenderer>();
-        diagTrig = GetComponent<DialogueTrigger>();
     }
 
     void OnMouseEnter() {
@@ -17,7 +17,12 @@ public class HoverHighlight : MonoBehaviour
     }
 
     void OnMouseDown() {
-        diagTrig.TriggerDialogue();
+        DialogueRunner diag = FindObjectOfType<DialogueRunner>();
+        if(diag.isDialogueRunning) { return; }
+        diag.StartDialogue(dialogueNode);
+        SamController sam = FindObjectOfType<SamController>();
+        sam.isControllable = false;
+        sam.animator.SetBool("isStaring", true);
     }
 
     void OnMouseExit() {

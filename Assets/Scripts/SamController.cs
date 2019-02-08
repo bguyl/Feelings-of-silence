@@ -2,11 +2,10 @@
 
 public class SamController : MonoBehaviour {
     private Rigidbody2D body;
-    private Animator animator;
-    private AudioSource audio;
+    public Animator animator;
     private SpriteRenderer spriteRenderer;
     private float targetX;
-    private bool isControllable = true;
+    public bool isControllable = true;
     public float maxSpeed = 1;
     // Start is called before the first frame update
     void Start() {
